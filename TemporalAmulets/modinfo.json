@@ -1,0 +1,13 @@
+{
+    "type": "code",
+    "modid": "temporalamulets",
+    "name": "TemporalAmulets",
+    "authors": [
+        "Necromunger"
+    ],
+    "description": "Adds temporal amulets that restore your sanity",
+    "version": "1.0.0",
+    "dependencies": {
+        "game": ""
+    }
+}
