@@ -7,7 +7,7 @@ namespace TemporalAmulets.Behaviors;
 
 public class EntityBehaviorTemporalNecklace : EntityBehavior
 {
-    private double accum;
+    private double accum = 0;
     private const double CheckIntervalSec = 1;
 
     public EntityBehaviorTemporalNecklace(Entity entity) : base(entity) { }
@@ -22,22 +22,27 @@ public class EntityBehaviorTemporalNecklace : EntityBehavior
         if (!(entity is EntityPlayer eplayer)) return;
 
         // get inventory
-        var player = eplayer.World.PlayerByUid(eplayer.PlayerUID);
-        IInventory inv = player.InventoryManager.GetOwnInventory("character");
+        var player = eplayer.World?.PlayerByUid(eplayer.PlayerUID);
+        if (player == null) return;
+
+        IInventory inv = player.InventoryManager?.GetOwnInventory("character");
         if (inv == null) return;
 
         ItemSlot neckSlot = inv[(int)EnumCharacterDressType.Neck];
         if (neckSlot == null || neckSlot.Empty) return;
 
         // get actual item from slot
-        var itemStack = neckSlot.Itemstack;
-        if (itemStack == null) return;
+        var stack = neckSlot.Itemstack;
+        if (stack == null) return;
+
+        var collectible = stack.Collectible;
+        if (collectible == null) return;
 
         // check durability over 0
-        var durability = itemStack.Collectible.GetRemainingDurability(itemStack);
+        var durability = collectible.GetRemainingDurability(stack);
         if (durability <= 0) return;
 
-        float restore = itemStack.Collectible.Attributes["sanityRestorationAmount"].AsFloat(0);
+        float restore = collectible.Attributes?["sanityRestorationAmount"]?.AsFloat() ?? 0f;
 
         // check if stability behavior exists and its low enough
         var stab = entity.GetBehavior<EntityBehaviorTemporalStabilityAffected>();
@@ -47,15 +52,6 @@ public class EntityBehaviorTemporalNecklace : EntityBehavior
         stab.OwnStability = GameMath.Clamp(stab.OwnStability + restore, 0f, 1f);
 
         // damage item
-        itemStack.Collectible?.DamageItem(entity.World, entity, neckSlot, 1);
-
-        // if destroyed remove light
-        durability = itemStack.Collectible.GetRemainingDurability(itemStack);
-        if (durability <= 0)
-        {
-            itemStack.Item.LightHsv = new ThreeBytes([0, 0, 0]);
-            itemStack.Collectible.LightHsv = new ThreeBytes([0, 0, 0]);
-            neckSlot.MarkDirty();
-        }
+        collectible.DamageItem(entity.World, entity, neckSlot, 1);
     }
 }

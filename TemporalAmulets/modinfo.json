@@ -6,7 +6,7 @@
         "Necromunger"
     ],
     "description": "Adds temporal amulets that restore your sanity",
-    "version": "1.0.0",
+    "version": "0.0.2",
     "dependencies": {
         "game": ""
     }
