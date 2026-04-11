@@ -7,31 +7,45 @@ namespace TemporalAmulets.Behaviors;
 
 public class EntityBehaviorTemporalNecklace : EntityBehavior
 {
-    private double accum = 0;
-    private const double CheckIntervalSec = 1;
+    private const double stability_interval = 1;
+    private double stability_timer = 0;
+    private IPlayer player;
+    private IInventory playerInventory;
+    private EntityPlayer eplayer;
+    private EntityBehaviorTemporalStabilityAffected stabilityAffected;
 
-    public EntityBehaviorTemporalNecklace(Entity entity) : base(entity) { }
+    public EntityBehaviorTemporalNecklace(Entity entity) : base(entity)
+    {
+        eplayer = entity as EntityPlayer;
+    }
+
+    public override void AfterInitialized(bool onFirstSpawn)
+    {
+        player = eplayer.World?.PlayerByUid(eplayer.PlayerUID);
+        stabilityAffected = entity.GetBehavior<EntityBehaviorTemporalStabilityAffected>();
+    }
+
     public override string PropertyName() => "EntityBehaviorTemporalNecklace";
 
     public override void OnGameTick(float dt)
     {
-        accum += dt;
-        if (accum < CheckIntervalSec) return;
-        accum = 0;
-
-        if (!(entity is EntityPlayer eplayer)) return;
-
-        // get inventory
-        var player = eplayer.World?.PlayerByUid(eplayer.PlayerUID);
         if (player == null) return;
 
-        IInventory inv = player.InventoryManager?.GetOwnInventory("character");
-        if (inv == null) return;
+        stability_timer += dt;
+        if (stability_timer < stability_interval) return;
+        stability_timer = 0;
 
-        ItemSlot neckSlot = inv[(int)EnumCharacterDressType.Neck];
+        // get player character inventory
+        if (playerInventory == null)
+            playerInventory = player.InventoryManager?.GetOwnInventory("character");
+
+        if (playerInventory == null) return;
+
+        // get neck slot
+        ItemSlot neckSlot = playerInventory[(int)EnumCharacterDressType.Neck];
         if (neckSlot == null || neckSlot.Empty) return;
 
-        // get actual item from slot
+        // get item in neck slot
         var stack = neckSlot.Itemstack;
         if (stack == null) return;
 
@@ -45,13 +59,13 @@ public class EntityBehaviorTemporalNecklace : EntityBehavior
         float restore = collectible.Attributes?["sanityRestorationAmount"]?.AsFloat() ?? 0f;
 
         // check if stability behavior exists and its low enough
-        var stab = entity.GetBehavior<EntityBehaviorTemporalStabilityAffected>();
-        if (stab == null || stab.OwnStability + restore > 1) return;
+        if (stabilityAffected == null || stabilityAffected.OwnStability + restore > 1) return;
 
         // restore sanity
-        stab.OwnStability = GameMath.Clamp(stab.OwnStability + restore, 0f, 1f);
+        stabilityAffected.OwnStability = GameMath.Clamp(stabilityAffected.OwnStability + restore, 0f, 1f);
 
         // damage item
-        collectible.DamageItem(entity.World, entity, neckSlot, 1);
+        collectible.DamageItem(entity.World, entity, neckSlot);
+        //collectible.SetDurability(stack, durability - 1);
     }
 }
