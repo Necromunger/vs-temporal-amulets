@@ -13,7 +13,7 @@
         { "name": "Wearable" },
         { "name": "BehaviorTemporalNecklace" } 
     ],
-	shape: { "base": "neck/temporal-sealed-necklace" },
+	shape: { "base": "neck/temporal-amulet-necklace" },
     durabilityByType: {
         "*-amulet-temporal-sealed-silver": 100,
         "*-amulet-temporal-sealed-tinbronze": 100,
