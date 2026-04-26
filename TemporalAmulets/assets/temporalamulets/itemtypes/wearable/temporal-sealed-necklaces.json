@@ -15,6 +15,7 @@
     ],
 	shape: { "base": "neck/temporal-sealed-necklace" },
     durabilityByType: {
+        "*-amulet-temporal-sealed-silver": 100,
         "*-amulet-temporal-sealed-tinbronze": 100,
         "*-amulet-temporal-sealed-electrum": 100
     },
@@ -28,18 +29,30 @@
 		}
 	},
 	attributesByType: {
+		"*-amulet-temporal-sealed-silver": {
+            "sanityRestorationAmount": 0.02
+        },
         "*-amulet-temporal-sealed-tinbronze": {
-            "sanityRestorationAmount": 0.03
+            "sanityRestorationAmount": 0.04
         },
 		"*-amulet-temporal-sealed-electrum": {
             "sanityRestorationAmount": 0.06
         },
-		"*":{ displaycaseable: true, onDisplayTransform: {
- 			translation: { x: -0.6, y: -1.2, z: 0 },
-			rotation: { x: 0, y: 0, z: -41 } }
+		"*": { 
+			displaycaseable: true, 
+			onDisplayTransform: {
+				translation: { x: -0.6, y: -1.2, z: 0 },
+				rotation: { x: 0, y: 0, z: -41 } 
+			}
 		}
 	},
 	texturesByType: {
+		"*-amulet-temporal-sealed-silver": {
+			"seraph": { "base": "game:block/transparent" },
+			"rustyglow": { "base": "game:block/machine/statictranslocator/rustyglow" },
+			"turquoise": { "base": "game:entity/humanoid/seraphclothes/neck/gem/turquoise" },
+			"metal": { "base": "game:block/metal/ingot/silver" }
+		},
 		"*-amulet-temporal-sealed-tinbronze": {
 			"seraph": { "base": "game:block/transparent" },
 			"rustyglow": { "base": "game:block/machine/statictranslocator/rustyglow" },
