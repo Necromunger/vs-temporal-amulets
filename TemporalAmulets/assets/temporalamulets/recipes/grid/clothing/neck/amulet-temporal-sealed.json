@@ -2,11 +2,11 @@
 	{
 		"ingredientPattern": "FHF,FLF,PTP",
 		"ingredients": {
-      "F": { "type": "item", "code": "game:flaxtwine", "quantity": 2  },
-      "H": { "type": "item", "code": "game:hammer-*", "isTool": true  },
-			"L": { "type": "block", "code": "game:leather-normal-*" },
-			"P": { "type": "item", "code": "game:metalplate-*", "name": "metal", "allowedVariants": ["tinbronze", "electrum"] },
-      "T": { "type": "item", "code": "game:gear-temporal" }
+			"F": { "type": "item", "code": "game:flaxtwine", "quantity": 2  },
+			"H": { "type": "item", "code": "game:hammer-*", "isTool": true  },
+			"L": { "type": "item", "code": "game:leather-normal-*", "quantity": 2 },
+			"P": { "type": "item", "code": "game:metalplate-*", "name": "metal", "allowedVariants": ["silver", "tinbronze", "electrum"] },
+			"T": { "type": "item", "code": "game:gear-temporal" }
 		},
 		"width": 3,
 		"height": 3,

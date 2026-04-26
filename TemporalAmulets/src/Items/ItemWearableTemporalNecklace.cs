@@ -1,10 +1,9 @@
 ﻿using Vintagestory.API.Common;
 using Vintagestory.API.MathTools;
-using Vintagestory.GameContent;
 
 namespace TemporalAmulets.Items;
 
-public class ItemWearableTemporalNecklace : ItemWearable
+public class ItemWearableTemporalNecklace : Item
 {
     public override byte[] GetLightHsv(IBlockAccessor blockAccessor, BlockPos pos, ItemStack stack = null)
     {

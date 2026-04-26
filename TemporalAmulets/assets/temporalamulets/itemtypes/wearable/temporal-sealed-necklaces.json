@@ -3,23 +3,20 @@
 	class: "ItemWearableTemporalNecklace",
 	variantgroups: [
 		{ code: "category",  states: ["neck"] },
-		{ code: "neck", combine: "SelectiveMultiply", onVariant: "category", 
-            states: [
-			    "amulet-temporal-sealed-tinbronze",
-			    "amulet-temporal-sealed-electrum"
-		    ] 
-        }
+		{ code: "neck", combine: "SelectiveMultiply", onVariant: "category", states: [
+			"amulet-temporal-sealed-silver",
+			"amulet-temporal-sealed-tinbronze",
+			"amulet-temporal-sealed-electrum"
+		]}
 	],
     behaviors:  [ 
+        { "name": "Wearable" },
         { "name": "BehaviorTemporalNecklace" } 
     ],
-	shapeByType: {
-		"*-tinbronze": { "base": "neck/temporal-sealed-necklace-tinbronze" },
-		"*-electrum": { "base": "neck/temporal-sealed-necklace-electrum" }
-	},
+	shape: { "base": "neck/temporal-sealed-necklace" },
     durabilityByType: {
-        "*-tinbronze": 100,
-        "*-electrum": 100
+        "*-amulet-temporal-sealed-tinbronze": 100,
+        "*-amulet-temporal-sealed-electrum": 100
     },
 	storageFlags: 128,
 	attributes: {
@@ -31,10 +28,10 @@
 		}
 	},
 	attributesByType: {
-        "*-tinbronze": {
+        "*-amulet-temporal-sealed-tinbronze": {
             "sanityRestorationAmount": 0.03
         },
-		"*-electrum": {
+		"*-amulet-temporal-sealed-electrum": {
             "sanityRestorationAmount": 0.06
         },
 		"*":{ displaycaseable: true, onDisplayTransform: {
@@ -43,15 +40,24 @@
 		}
 	},
 	texturesByType: {
-		"*": {
-			"seraph": { "base": "game:block/transparent" }
+		"*-amulet-temporal-sealed-tinbronze": {
+			"seraph": { "base": "game:block/transparent" },
+			"rustyglow": { "base": "game:block/machine/statictranslocator/rustyglow" },
+			"turquoise": { "base": "game:entity/humanoid/seraphclothes/neck/gem/turquoise" },
+			"metal": { "base": "game:block/metal/ingot/tinbronze" }
+		},
+		"*-amulet-temporal-sealed-electrum": {
+			"seraph": { "base": "game:block/transparent" },
+			"rustyglow": { "base": "game:block/machine/statictranslocator/rustyglow" },
+			"turquoise": { "base": "game:entity/humanoid/seraphclothes/neck/gem/turquoise" },
+			"metal": { "base": "game:block/metal/ingot/electrum" }
 		}
 	},
 	creativeinventory: { "general": ["*"], "items": ["*"], "clothing": ["*"] },
 	renderAlphaTest: 0.25,
 	lightHsvByType: {
-		"*-tinbronze": [32, 4, 1],
-		"*-electrum": [32, 4, 1]
+		"*-amulet-temporal-sealed-tinbronze": [32, 4, 1],
+		"*-amulet-temporal-sealed-electrum": [32, 4, 2]
 	},
 	fpHandTransform: {
 		translation: { x: 0.2, y: -2.5, z: -0.9 },
