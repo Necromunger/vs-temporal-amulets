@@ -1,5 +1,23 @@
 {
     "temporalamulets:item-clothes-neck-amulet-temporal-sealed-silver": "Silver sealed temporal amulet",
     "temporalamulets:item-clothes-neck-amulet-temporal-sealed-tinbronze": "Tin bronze sealed temporal amulet",
-    "temporalamulets:item-clothes-neck-amulet-temporal-sealed-electrum": "Electrum sealed temporal amulet"
+    "temporalamulets:item-clothes-neck-amulet-temporal-sealed-electrum": "Electrum sealed temporal amulet",
+    "temporalamulets:item-amulet-temporal-frame-silver": "Silver temporal amulet frame",
+    "temporalamulets:item-amulet-temporal-frame-tinbronze": "Tin bronze temporal amulet frame",
+    "temporalamulets:item-amulet-temporal-frame-electrum": "Electrum temporal amulet frame",
+
+    "temporalamulets:block-amuletmold-blue-raw": "Raw blue temporal amulet frame mold",
+    "temporalamulets:block-amuletmold-red-raw": "Raw red temporal amulet frame mold",
+    "temporalamulets:block-amuletmold-fire-raw": "Raw fire temporal amulet frame mold",
+
+    "temporalamulets:block-amuletmold-tan-fired": "Tan temporal amulet frame mold",
+    "temporalamulets:block-amuletmold-red-fired": "Red temporal amulet frame mold",
+    "temporalamulets:block-amuletmold-gray-fired": "Gray temporal amulet frame mold",
+    "temporalamulets:block-amuletmold-blue-fired": "Blue temporal amulet frame mold",
+    "temporalamulets:block-amuletmold-fire-fired": "Fire temporal amulet frame mold",
+    "temporalamulets:block-amuletmold-cream-fired": "Cream temporal amulet frame mold",
+    "temporalamulets:block-amuletmold-black-fired": "Black temporal amulet frame mold",
+    "temporalamulets:block-amuletmold-brown-fired": "Brown temporal amulet frame mold",
+    "temporalamulets:block-amuletmold-orange-fired": "Orange temporal amulet frame mold",
+    "temporalamulets:block-amuletmold-earthyorange-fired": "Earthyorange temporal amulet frame mold"
 }

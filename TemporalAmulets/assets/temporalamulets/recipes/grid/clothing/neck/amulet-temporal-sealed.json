@@ -1,11 +1,11 @@
 [
 	{
-		"ingredientPattern": "FHF,FLF,PTP",
+		"ingredientPattern": "FHF,FTF,LPL",
 		"ingredients": {
 			"F": { "type": "item", "code": "game:flaxtwine", "quantity": 2  },
 			"H": { "type": "item", "code": "game:hammer-*", "isTool": true  },
 			"L": { "type": "item", "code": "game:leather-normal-*", "quantity": 2 },
-			"P": { "type": "item", "code": "game:metalplate-*", "name": "metal", "allowedVariants": ["silver", "tinbronze", "electrum"] },
+			"P": { "type": "item", "code": "amulet-temporal-frame-*", "name": "metal", "allowedVariants": ["silver", "tinbronze", "electrum"] },
 			"T": { "type": "item", "code": "game:gear-temporal" }
 		},
 		"width": 3,
