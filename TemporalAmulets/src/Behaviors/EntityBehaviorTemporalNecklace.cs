@@ -66,6 +66,5 @@ public class EntityBehaviorTemporalNecklace : EntityBehavior
 
         // damage item
         collectible.DamageItem(entity.World, entity, neckSlot);
-        //collectible.SetDurability(stack, durability - 1);
     }
 }

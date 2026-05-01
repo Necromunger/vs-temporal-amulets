@@ -69,8 +69,9 @@
 	creativeinventory: { "general": ["*"], "items": ["*"], "clothing": ["*"] },
 	renderAlphaTest: 0.25,
 	lightHsvByType: {
+		"*-amulet-temporal-sealed-silver": [32, 4, 1],
 		"*-amulet-temporal-sealed-tinbronze": [32, 4, 1],
-		"*-amulet-temporal-sealed-electrum": [32, 4, 2]
+		"*-amulet-temporal-sealed-electrum": [32, 4, 1]
 	},
 	fpHandTransform: {
 		translation: { x: 0.2, y: -2.5, z: -0.9 },
